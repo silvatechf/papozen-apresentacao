@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapoZen - Apresentação</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FEF3C7, #F59E0B);
+            color: #1F2937;
+            line-height: 1.6;
+        }
+        
+        .presentation {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+        
+        .slide h1 {
+            color: #D97706;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .slide h2 {
+            color: #1F2937;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #FCD34D;
+            padding-bottom: 10px;
+        }
+        
+        .mockup-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .phone-mockup {
+            width: 250px;
+            height: 500px;
+            background: #1F2937;
+            border-radius: 30px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #F9FAFB;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .status-bar {
+            height: 30px;
+            background: #374151;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            font-size: 12px;
+        }
+        
+        .app-content {
+            padding: 20px;
+            height: calc(100% - 30px);
+            box-sizing: border-box;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #FCD34D, #F59E0B);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .header h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .mood-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        
+        .mood-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: #F3F4F6;
+            border: 2px solid transparent;
+        }
+        
+        .mood-btn.active {
+            background: #FCD34D;
+            border-color: #F59E0B;
+            transform: scale(1.1);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .menu-btn {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .menu-btn.green { background: linear-gradient(135deg, #10B981, #059669); }
+        .menu-btn.purple { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+        .menu-btn.red { background: linear-gradient(135deg, #EF4444, #DC2626); }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            background: #F8FAFC;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #F59E0B;
+        }
+        
+        .feature h3 {
+            color: #D97706;
+            margin: 0 0 15px 0;
+            font-size: 1.2em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat {
+            background: linear-gradient(135deg, #EDE9FE, #C4B5FD);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #7C3AED;
+            margin: 0;
+        }
+        
+        .stat-label {
+            color: #6B46C1;
+            margin: 10px 0 0 0;
+            font-weight: 600;
+        }
+        
+        .emergency-section {
+            background: #FEF2F2;
+            border: 2px solid #F87171;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .emergency-section h3 {
+            color: #DC2626;
+            margin: 0 0 15px 0;
+        }
+        
+        .cvv-button {
+            background: #DC2626;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .breathing-circle {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #60A5FA, #3B82F6);
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            animation: breathe 4s infinite;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .exercise-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .exercise-title {
+            font-weight: bold;
+            color: #1F2937;
+            font-size: 14px;
+        }
+        
+        .exercise-duration {
+            background: #10B981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+        }
+        
+        .exercise-description {
+            color: #6B7280;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+        
+        .start-btn {
+            background: #10B981;
+            color: white;
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        
+        <!-- Slide 1: Título -->
+        <div class="slide">
+            <h1>🌻 PapoZen</h1>
+            <div style="text-align: center; margin: 40px 0;">
+                <div style="font-size: 4em; margin-bottom: 20px;">📱💛🧘‍♀️</div>
+                <h2 style="border: none; color: #D97706;">Cuidando da Mente</h2>
+                <p style="font-size: 1.5em; color: #6B7280; margin: 20px 0;">Setembro Amarelo 2024</p>
+                <div style="background: #FEF3C7; padding: 30px; border-radius: 15px; margin: 30px 0;">
+                    <p style="font-size: 1.8em; color: #D97706; margin: 0; font-weight: 600;">
+                        "Sua vida importa. Você não está sozinho."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problema e Solução -->
+        <div class="slide">
+            <h2>🎯 O Problema</h2>
+            <div class="stats">
+                <div class="stat">
+                    <p class="stat-number">12 mil</p>
+                    <p class="stat-label">Suicídios por ano no Brasil</p>
+                </div>
+                <div class="stat">
+                    <p class="stat-number">32</p>
+                    <p class="stat-label">Mortes por dia</p>
+                </div>
+                <div class="stat">
+                    <p class="stat-number">90%</p>
+                    <p class="stat-label">Podem ser prevenidos</p>
+                </div>
+            </div>
+            
+            <h2>💡 Nossa Solução</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>🚀 Acesso Imediato</h3>
+                    <p>Ferramentas de apoio disponíveis 24/7, sem necessidade de cadastro ou login.</p>
+                </div>
+                <div class="feature">
+                    <h3>🧠 Baseado em Ciência</h3>
+                    <p>Técnicas comprovadas de mindfulness, respiração e psicologia positiva.</p>
+                </div>
+                <div class="feature">
+                    <h3>📱 Tecnologia Acessível</h3>
+                    <p>Interface intuitiva que qualquer pessoa pode usar em momentos de crise.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Tela Principal -->
+        <div class="slide">
+            <h2>📱 Tela Principal - Check-in Emocional</h2>
+            <div class="mockup-container">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="app-content">
+                            <div class="header">
+                                <div style="font-size: 36px; margin-bottom: 10px;">☀️</div>
+                                <h3>Setembro Amarelo</h3>
+                                <p>Sua vida importa. Você não está sozinho.</p>
+                            </div>
+                            
+                            <div style="background: white; padding: 15px; border-radius: 15px; margin-bottom: 15px;">
+                                <h4 style="margin: 0 0 15px 0; color: #1F2937;">Como você se sente hoje?</h4>
+                                <div class="mood-buttons">
+                                    <div class="mood-btn">😢</div>
+                                    <div class="mood-btn">😟</div>
+                                    <div class="mood-btn active">😊</div>
+                                    <div class="mood-btn">😄</div>
+                                </div>
+                                <p style="text-align: center; color: #6B7280; font-size: 12px; margin: 15px 0 0 0;">
+                                    Obrigado por compartilhar! Todos os sentimentos são válidos.
+                                </p>
+                            </div>
+                            
+                            <div class="menu-grid">
+                                <div class="menu-btn">
+                                    <div style="font-size: 20px; margin-bottom: 5px;">🫁</div>
+                                    <div>Respiração</div>
+                                </div>
+                                <div class="menu-btn green">
+                                    <div style="font-size: 20px; margin-bottom: 5px;">📖</div>
+                                    <div>Exercícios</div>
+                                </div>
+                                <div class="menu-btn purple">
+                                    <div style="font-size: 20px; margin-bottom: 5px;">💜</div>
+                                    <div>Gratidão</div>
+                                </div>
+                                <div class="menu-btn red">
+                                    <div style="font-size: 20px; margin-bottom: 5px;">📞</div>
+                                    <div>Ajuda</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px;">
+                    <h3>✨ Funcionalidades da Tela Principal</h3>
+                    <ul style="font-size: 1.1em; line-height: 2;">
+                        <li><strong>Check-in emocional diário</strong> - 5 níveis de humor</li>
+                        <li><strong>Navegação intuitiva</strong> - 4 áreas principais</li>
+                        <li><strong>Visual acolhedor</strong> - cores Setembro Amarelo</li>
+                        <li><strong>Mensagens de apoio</strong> - validação dos sentimentos</li>
+                        <li><strong>Acesso rápido</strong> - tudo a um toque</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Respiração -->
+        <div class="slide">
+            <h2>🫁 Respiração Terapêutica</h2>
+            <div class="mockup-container">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="app-content">
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <h3 style="margin: 0 0 10px 0; color: #1F2937;">Exercício de Respiração</h3>
+                                <p style="color: #6B7280; font-size: 12px; margin: 0;">Técnica 4-7-8 para reduzir ansiedade</p>
+                            </div>
+                            
+                            <div style="background: white; padding: 30px; border-radius: 15px; text-align: center;">
+                                <div class="breathing-circle">🫁</div>
+                                <div style="background: #EBF8FF; padding: 15px; border-radius: 10px; margin: 20px 0;">
+                                    <p style="color: #1E40AF; font-weight: 600; margin: 0; font-size: 14px;">
+                                        Ciclo 2/4: Inspire pelo nariz suavemente...
+                                    </p>
+                                </div>
+                                <div style="display: flex; justify-content: center; gap: 20px; font-size: 11px; color: #6B7280;">
+                                    <span>🌊 Siga seu ritmo natural</span>
+                                    <span>☮️ Permita-se relaxar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px;">
+                    <h3>🧬 Técnica 4-7-8 Comprovada</h3>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h3>📈 Eficácia Científica</h3>
+                            <p>Reduz cortisol em 23% e ativa o sistema nervoso parassimpático</p>
+                        </div>
+                        <div class="feature">
+                            <h3>⏱️ Tempo Real</h3>
+                            <p>4s inspirar → 7s segurar → 8s expirar × 4 ciclos = 5 minutos</p>
+                        </div>
+                        <div class="feature">
+                            <h3>🎯 Uso Imediato</h3>
+                            <p>Funciona em crises de ansiedade, ataques de pânico e insônia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Exercícios -->
+        <div class="slide">
+            <h2>🧘 Exercícios de Mindfulness</h2>
+            <div class="mockup-container">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="app-content">
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <h3 style="margin: 0 0 5px 0; color: #1F2937;">Exercícios de Bem-Estar</h3>
+                                <p style="color: #6B7280; font-size: 11px; margin: 0;">Práticas baseadas em mindfulness e psicologia positiva</p>
+                            </div>
+                            
+                            <div class="exercise-card">
+                                <div class="exercise-header">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div style="font-size: 20px;">🫁</div>
+                                        <div class="exercise-title">Respiração 4-7-8</div>
+                                    </div>
+                                    <div class="exercise-duration">5 min</div>
+                                </div>
+                                <div class="exercise-description">
+                                    Técnica comprovada para reduzir ansiedade e ativar relaxamento
+                                </div>
+                                <div class="start-btn">▶️ Iniciar Respiração 4-7-8</div>
+                            </div>
+                            
+                            <div class="exercise-card">
+                                <div class="exercise-header">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div style="font-size: 20px;">🙏</div>
+                                        <div class="exercise-title">Gratidão Direcionada</div>
+                                    </div>
+                                    <div class="exercise-duration">3 min</div>
+                                </div>
+                                <div class="exercise-description">
+                                    Exercício estruturado com prompts específicos para positividade
+                                </div>
+                                <div class="start-btn">▶️ Iniciar Gratidão Direcionada</div>
+                            </div>
+                            
+                            <div class="exercise-card">
+                                <div class="exercise-header">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div style="font-size: 20px;">🚶</div>
+                                        <div class="exercise-title">Caminhada Mindful</div>
+                                    </div>
+                                    <div class="exercise-duration">10 min</div>
+                                </div>
+                                <div class="exercise-description">
+                                    Meditação em movimento conectando corpo e mente
+                                </div>
+                                <div class="start-btn">▶️ Iniciar Caminhada Mindful</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px;">
+                    <h3>🎯 Plano de Bem-Estar Progressivo</h3>
+                    <div class="feature-list">
+                        <div class="feature" style="border-left-color: #10B981;">
+                            <h3>🌱 Semanas 1-2: Fundação</h3>
+                            <p><strong>Respiração diária (5min) + Check-in de humor + Gratidão</strong><br>
+                            Estabelece rotina básica de autocuidado</p>
+                        </div>
+                        <div class="feature" style="border-left-color: #3B82F6;">
+                            <h3>🚶 Semanas 3-4: Movimento</h3>
+                            <p><strong>Adiciona caminhada consciente 3x por semana</strong><br>
+                            Integra mindfulness com atividade física</p>
